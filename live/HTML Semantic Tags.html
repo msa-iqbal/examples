@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Semantic Tags Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Custom styles to make the tags more visible */
+        .semantic-tag {
+            border: 2px dashed #94a3b8;
+            padding: 1rem;
+            margin: 0.5rem;
+            border-radius: 0.5rem;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .semantic-tag::before {
+            content: '<' attr(data-tag-name) '>';
+            position: absolute;
+            top: -0.75rem;
+            left: 0.5rem;
+            background-color: #334155;
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 bg-slate-50 text-slate-800">
+
+    <!-- The <template> tag defines content to be cloned and inserted later by JavaScript. It is not rendered on page load. -->
+    <template id="slot-template">
+        <div class="border-l-4 border-blue-500 pl-4 italic">
+            <p>This content comes from a template.</p>
+            <!-- The <slot> tag is a placeholder inside a web component that you can fill with your own markup -->
+            <slot name="template-slot"></slot>
+        </div>
+    </template>
+
+    <header data-tag-name="header" class="semantic-tag bg-slate-100">
+        <h1 class="text-3xl font-bold text-slate-900">Website Header</h1>
+        <p class="text-slate-600">This is the &lt;header&gt; area, typically for logos, site titles, and primary navigation.</p>
+        <nav data-tag-name="nav" class="semantic-tag mt-4 bg-slate-200">
+            <ul class="flex space-x-4">
+                <li><a href="#" class="text-blue-600 hover:underline">Home</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">About</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="flex flex-col lg:flex-row mt-6">
+        <main data-tag-name="main" class="semantic-tag flex-grow bg-white">
+            <h2 class="text-2xl font-bold mb-4">Main Content</h2>
+            <p>This is the &lt;main&gt; content of the page. It should be unique to this page and not repeated across the site.</p>
+
+            <section data-tag-name="section" class="semantic-tag mt-4 bg-slate-50">
+                <h3 class="text-xl font-semibold">A Thematic Section</h3>
+                <p>The &lt;section&gt; tag groups related content together.</p>
+
+                <article data-tag-name="article" class="semantic-tag mt-4 bg-white shadow-sm">
+                    <h4 class="text-lg font-bold">Article Title</h4>
+                    <p>
+                        The &lt;article&gt; tag represents a self-contained piece of content, like a blog post or news story.
+                        Here is some <mark data-tag-name="mark" class="bg-yellow-200 px-1 rounded semantic-tag !p-1 !m-0 !border-yellow-400">highlighted text</mark> using the &lt;mark&gt; tag.
+                    </p>
+                    <p class="mt-2 text-sm text-slate-500">
+                        Published on: <time data-tag-name="time" datetime="2025-08-16" class="semantic-tag !p-1 !m-0 !border-green-400">August 16, 2025</time>
+                    </p>
+
+                    <figure data-tag-name="figure" class="semantic-tag mt-4 bg-slate-100">
+                        <img src="https://placehold.co/600x300/e2e8f0/334155?text=Placeholder+Image" alt="A placeholder image" class="rounded w-full">
+                        <figcaption data-tag-name="figcaption" class="semantic-tag !border-t-0 !pt-2 text-center text-sm text-slate-600 bg-slate-200">
+                            This is a &lt;figcaption&gt; for the image in the &lt;figure&gt;.
+                        </figcaption>
+                    </figure>
+                </article>
+            </section>
+
+            <section data-tag-name="section" class="semantic-tag mt-6 bg-slate-50">
+                 <h3 class="text-xl font-semibold">Interactive Elements</h3>
+                 <details data-tag-name="details" class="semantic-tag mt-4 bg-white cursor-pointer">
+                     <summary data-tag-name="summary" class="font-semibold semantic-tag !p-2 !m-0 bg-slate-100">
+                         Click to see more details
+                     </summary>
+                     <p class="mt-2 p-2">This is the content inside the &lt;details&gt; element. It's hidden by default and revealed when the &lt;summary&gt; is clicked.</p>
+                 </details>
+
+                 <button id="showDialogBtn" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Show Dialog</button>
+            </section>
+        </main>
+
+        <aside data-tag-name="aside" class="semantic-tag lg:w-1/3 lg:ml-6 mt-6 lg:mt-0 bg-slate-100">
+            <h3 class="text-xl font-semibold">Aside</h3>
+            <p>The &lt;aside&gt; contains content that is tangentially related to the main content, like a sidebar or pull quotes.</p>
+            <ul class="list-disc list-inside mt-2">
+                <li><a href="#" class="text-blue-600 hover:underline">Related Link 1</a></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Related Link 2</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer data-tag-name="footer" class="semantic-tag mt-6 bg-slate-200 text-center text-sm">
+        <p>&copy; 2025 Semantic HTML Demo. This is the &lt;footer&gt;, for copyright info, contact details, etc.</p>
+    </footer>
+
+    <!-- The <dialog> element represents a dialog box or other interactive component. -->
+    <dialog id="infoDialog" data-tag-name="dialog" class="semantic-tag rounded-lg shadow-xl p-0 w-11/12 md:w-1/2">
+        <div class="p-6">
+            <h3 class="text-lg font-bold">This is a &lt;dialog&gt; element</h3>
+            <p class="py-4">It can be opened and closed using JavaScript. The &lt;template&gt; and &lt;slot&gt; tags are not visually rendered here but are included in the HTML for completeness.</p>
+            <div id="template-content-host"></div>
+        </div>
+        <div class="bg-slate-100 px-6 py-3 text-right">
+            <button id="closeDialogBtn" class="bg-slate-600 text-white px-4 py-2 rounded hover:bg-slate-700">Close</button>
+        </div>
+    </dialog>
+
+    <script>
+        const showDialogBtn = document.getElementById('showDialogBtn');
+        const closeDialogBtn = document.getElementById('closeDialogBtn');
+        const infoDialog = document.getElementById('infoDialog');
+        const template = document.getElementById('slot-template');
+        const host = document.getElementById('template-content-host');
+
+        // Clone the template content and append it to the host in the dialog
+        const templateContent = template.content.cloneNode(true);
+        host.appendChild(templateContent);
+
+        showDialogBtn.addEventListener('click', () => {
+            infoDialog.showModal(); // Using showModal() provides better accessibility (e.g., traps focus)
+        });
+
+        closeDialogBtn.addEventListener('click', () => {
+            infoDialog.close();
+        });
+
+        // Optional: close the dialog by clicking outside of it
+        infoDialog.addEventListener('click', (event) => {
+            if (event.target === infoDialog) {
+                infoDialog.close();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Examples - Share & Discover</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css"
+    />
+    <style>
+      :root {
+        --bg-primary: #0f172a;
+        --bg-secondary: #1e293b;
+        --bg-card: #1e293b;
+        --text-primary: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-muted: #94a3b8;
+        --border: #334155;
+        --accent-blue: #3b82f6;
+        --accent-purple: #8b5cf6;
+        --accent-pink: #ec4899;
+        --accent-green: #10b981;
+        --accent-orange: #f59e0b;
+        --accent-red: #ef4444;
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.4),
+          0 2px 4px -2px rgb(0 0 0 / 0.4);
+        --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.4),
+          0 8px 10px -6px rgb(0 0 0 / 0.4);
+        --gradient-1: linear-gradient(
+          135deg,
+          var(--accent-blue),
+          var(--accent-purple)
+        );
+        --gradient-2: linear-gradient(
+          135deg,
+          var(--accent-purple),
+          var(--accent-pink)
+        );
+        --gradient-3: linear-gradient(
+          135deg,
+          var(--accent-green),
+          var(--accent-blue)
+        );
+        --gradient-4: linear-gradient(
+          135deg,
+          var(--accent-orange),
+          var(--accent-red)
+        );
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-blue) var(--bg-primary);
+      }
+
+      body {
+        font-family: "Source Sans Pro", sans-serif;
+        background: linear-gradient(135deg, var(--bg-primary) 0%, #1a202c 100%);
+        color: var(--text-primary);
+        line-height: 1.6;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 100vh;
+        scroll-behavior: smooth;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Header */
+      .header {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.875rem;
+        font-weight: 700;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      /* Search Bar */
+      .search-section {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .search-container {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 1rem 1.5rem 1rem 3rem;
+        border: 2px solid var(--border);
+        border-radius: 50px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: "Source Sans Pro", sans-serif;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+      }
+
+      .search-input:focus {
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        background: rgba(30, 41, 59, 0.8);
+      }
+
+      .search-input::placeholder {
+        color: var(--text-muted);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        pointer-events: none;
+        transition: color 0.3s ease;
+      }
+
+      .search-input:focus + .search-icon {
+        color: var(--accent-blue);
+      }
+
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.75rem 1.5rem;
+        border: 2px solid var(--border);
+        border-radius: 50px;
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(10px);
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        outline: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .filter-btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-1);
+        transition: left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: -1;
+      }
+
+      .filter-btn:hover {
+        border-color: var(--accent-blue);
+        color: var(--accent-blue);
+        transform: translateY(-2px);
+      }
+
+      .filter-btn:hover::before {
+        left: 0;
+      }
+
+      .filter-btn.active {
+        background: var(--gradient-1);
+        border-color: transparent;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Main Content */
+      .main {
+        padding: 3rem 0;
+        min-height: calc(100vh - 140px);
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: glow 3s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+        }
+        to {
+          filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.4));
+        }
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      /* Code Examples Grid */
+      .examples-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+      }
+
+      .example-card {
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .example-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(139, 92, 246, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+      }
+
+      .example-card:hover::before {
+        opacity: 1;
+      }
+
+      .example-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--accent-blue);
+      }
+
+      .example-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .example-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .example-info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .example-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .example-card[data-language="html"] .example-icon {
+        background: var(--gradient-4);
+      }
+
+      .example-card[data-language="css"] .example-icon {
+        background: var(--gradient-1);
+      }
+
+      .example-card[data-language="javascript"] .example-icon {
+        background: var(--gradient-3);
+      }
+
+      .example-card[data-language="react"] .example-icon {
+        background: var(--gradient-2);
+      }
+
+      .example-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+      }
+
+      .example-language {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-weight: 500;
+      }
+
+      .example-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .action-btn {
+        padding: 0.5rem;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(30, 41, 59, 0.6);
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .action-btn:hover {
+        background: var(--accent-blue);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .code-section {
+        position: relative;
+      }
+
+      .code-block {
+        background: #2d3748;
+        margin: 0;
+        border-radius: 0;
+        max-height: 300px;
+        overflow-y: auto;
+        font-size: 0.875rem;
+        line-height: 1.5;
+      }
+
+      .code-block code {
+        padding: 1.5rem !important;
+        display: block;
+      }
+
+      .preview-section {
+        padding: 1.5rem;
+        border-top: 1px solid var(--border);
+        background: rgba(15, 23, 42, 0.5);
+      }
+
+      .preview-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .preview-content {
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e8f0;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-muted);
+      }
+
+      .no-results .material-icons {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        opacity: 0.5;
+      }
+
+      /* Footer */
+      .footer {
+        background: rgba(30, 41, 59, 0.8);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid var(--border);
+        padding: 2rem 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      .footer a {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .footer a:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+      }
+
+      /* Hidden Class */
+      .hidden {
+        opacity: 0;
+        transform: scale(0.95);
+        pointer-events: none;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .example-card:not(.hidden) {
+        opacity: 1;
+        transform: scale(1);
+        pointer-events: auto;
+      }
+
+      /* Scrollbar */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--bg-primary);
+        border-radius: 6px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #1e293b, #334155);
+        border-radius: 6px;
+        border: 2px solid var(--bg-primary);
+        transition: all 0.2s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, #334155, #475569);
+        transform: scale(1.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .examples-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .example-card {
+          margin: 0 -0.5rem;
+        }
+
+        .search-container {
+          max-width: 100%;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .example-card {
+        animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      .example-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .example-card:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .example-card:nth-child(3) {
+        animation-delay: 0.15s;
+      }
+      .example-card:nth-child(4) {
+        animation-delay: 0.2s;
+      }
+      .example-card:nth-child(5) {
+        animation-delay: 0.25s;
+      }
+      .example-card:nth-child(6) {
+        animation-delay: 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="#" class="logo">
+            <span class="material-icons">code</span>
+            examples
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="container">
+        <section class="hero">
+          <h1>Code Examples</h1>
+          <p>
+            Discover beautiful code snippets with live previews. Copy, learn,
+            and build amazing things.
+          </p>
+        </section>
+
+        <section class="search-section">
+          <div class="search-container">
+            <span class="material-icons search-icon">search</span>
+            <input
+              type="text"
+              class="search-input"
+              id="searchInput"
+              placeholder="Search code examples..."
+              autocomplete="off"
+            />
+          </div>
+
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-language="all">
+              All Languages
+            </button>
+            <button class="filter-btn" data-language="html">HTML</button>
+            <button class="filter-btn" data-language="css">CSS</button>
+            <button class="filter-btn" data-language="javascript">
+              JavaScript
+            </button>
+            <button class="filter-btn" data-language="react">React</button>
+          </div>
+        </section>
+
+        <section class="examples-grid" id="examplesGrid">
+          <!-- HTML Example -->
+          <div
+            class="example-card"
+            data-language="html"
+            data-title="Responsive Card Layout"
+          >
+            <div class="example-header">
+              <div class="example-info">
+                <div class="example-icon">
+                  <span class="material-icons">html</span>
+                </div>
+                <div>
+                  <h3 class="example-title">Responsive Card Layout</h3>
+                  <p class="example-language">HTML</p>
+                </div>
+              </div>
+              <div class="example-actions">
+                <button class="action-btn copy-btn" title="Copy Code">
+                  <span class="material-icons">content_copy</span>
+                </button>
+                <button class="action-btn like-btn" title="Like">
+                  <span class="material-icons">favorite_border</span>
+                </button>
+              </div>
+            </div>
+            <div class="code-section">
+              <pre
+                class="code-block"
+              ><code class="language-html">&lt;div class="card"&gt;
+  &lt;img src="image.jpg" alt="Card Image" class="card-image"&gt;
+  &lt;div class="card-content"&gt;
+    &lt;h3 class="card-title"&gt;Beautiful Card&lt;/h3&gt;
+    &lt;p class="card-description"&gt;
+      This is a responsive card component with modern styling.
+    &lt;/p&gt;
+    &lt;button class="card-button"&gt;Learn More&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            <div class="preview-section">
+              <div class="preview-title">
+                <span class="material-icons">visibility</span>
+                Live Preview
+              </div>
+              <div class="preview-content">
+                <div
+                  style="
+                    max-width: 300px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    background: white;
+                  "
+                >
+                  <div
+                    style="
+                      height: 120px;
+                      background: linear-gradient(
+                        135deg,
+                        #667eea 0%,
+                        #764ba2 100%
+                      );
+                    "
+                  ></div>
+                  <div style="padding: 1rem">
+                    <h3
+                      style="
+                        margin: 0 0 0.5rem 0;
+                        color: #1a202c;
+                        font-size: 1.125rem;
+                      "
+                    >
+                      Beautiful Card
+                    </h3>
+                    <p
+                      style="
+                        margin: 0 0 1rem 0;
+                        color: #4a5568;
+                        font-size: 0.875rem;
+                      "
+                    >
+                      This is a responsive card component with modern styling.
+                    </p>
+                    <button
+                      style="
+                        background: #3182ce;
+                        color: white;
+                        border: none;
+                        padding: 0.5rem 1rem;
+                        border-radius: 6px;
+                        cursor: pointer;
+                      "
+                    >
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CSS Example -->
+          <div
+            class="example-card"
+            data-language="css"
+            data-title="Gradient Button Animation"
+          >
+            <div class="example-header">
+              <div class="example-info">
+                <div class="example-icon">
+                  <span class="material-icons">palette</span>
+                </div>
+                <div>
+                  <h3 class="example-title">Gradient Button Animation</h3>
+                  <p class="example-language">CSS</p>
+                </div>
+              </div>
+              <div class="example-actions">
+                <button class="action-btn copy-btn" title="Copy Code">
+                  <span class="material-icons">content_copy</span>
+                </button>
+                <button class="action-btn like-btn" title="Like">
+                  <span class="material-icons">favorite_border</span>
+                </button>
+              </div>
+            </div>
+            <div class="code-section">
+              <pre
+                class="code-block"
+              ><code class="language-css">.gradient-button {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+}
+
+.gradient-button:active {
+  transform: translateY(0);
+}</code></pre>
+            </div>
+            <div class="preview-section">
+              <div class="preview-title">
+                <span class="material-icons">visibility</span>
+                Live Preview
+              </div>
+              <div class="preview-content">
+                <button
+                  style="
+                    background: linear-gradient(45deg, #667eea, #764ba2);
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 25px;
+                    color: white;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 20px rgba(102, 126, 234, 0.4)'"
+                  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'"
+                >
+                  Hover Me!
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- JavaScript Example -->
+          <div
+            class="example-card"
+            data-language="javascript"
+            data-title="Dynamic Counter"
+          >
+            <div class="example-header">
+              <div class="example-info">
+                <div class="example-icon">
+                  <span class="material-icons">javascript</span>
+                </div>
+                <div>
+                  <h3 class="example-title">Dynamic Counter</h3>
+                  <p class="example-language">JavaScript</p>
+                </div>
+              </div>
+              <div class="example-actions">
+                <button class="action-btn copy-btn" title="Copy Code">
+                  <span class="material-icons">content_copy</span>
+                </button>
+                <button class="action-btn like-btn" title="Like">
+                  <span class="material-icons">favorite_border</span>
+                </button>
+              </div>
+            </div>
+            <div class="code-section">
+              <pre
+                class="code-block"
+              ><code class="language-javascript">class Counter {
+  constructor(element, target = 100) {
+    this.element = element;
+    this.target = target;
+    this.current = 0;
+    this.increment = target / 100;
+  }
+
+  animate() {
+    if (this.current < this.target) {
+      this.current += this.increment;
+      this.element.textContent = Math.floor(this.current);
+      requestAnimationFrame(() => this.animate());
+    } else {
+      this.element.textContent = this.target;
+    }
+  }
+
+  start() {
+    this.animate();
+  }
+}
+
+// Usage
+const counter = new Counter(document.getElementById('counter'), 250);
+counter.start();</code></pre>
+            </div>
+            <div class="preview-section">
+              <div class="preview-title">
+                <span class="material-icons">visibility</span>
+                Live Preview
+              </div>
+              <div class="preview-content">
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-size: 3rem;
+                      font-weight: bold;
+                      color: #3182ce;
+                      margin-bottom: 1rem;
+                    "
+                    id="demoCounter"
+                  >
+                    0
+                  </div>
+                  <button
+                    onclick="startDemoCounter()"
+                    style="
+                      background: #3182ce;
+                      color: white;
+                      border: none;
+                      padding: 0.5rem 1rem;
+                      border-radius: 6px;
+                      cursor: pointer;
+                    "
+                  >
+                    Start Counter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- React Example -->
+          <div
+            class="example-card"
+            data-language="react"
+            data-title="Toggle Switch Component"
+          >
+            <div class="example-header">
+              <div class="example-info">
+                <div class="example-icon">
+                  <span class="material-icons">react</span>
+                </div>
+                <div>
+                  <h3 class="example-title">Toggle Switch Component</h3>
+                  <p class="example-language">React</p>
+                </div>
+              </div>
+              <div class="example-actions">
+                <button class="action-btn copy-btn" title="Copy Code">
+                  <span class="material-icons">content_copy</span>
+                </button>
+                <button class="action-btn like-btn" title="Like">
+                  <span class="material-icons">favorite_border</span>
+                </button>
+              </div>
+            </div>
+            <div class="code-section">
+              <pre
+                class="code-block"
+              ><code class="language-jsx">import React, { useState } from 'react';
+
+const ToggleSwitch = ({ label, onChange }) => {
+  const [isOn, setIsOn] = useState(false);
+
+  const handleToggle = () => {
+    const newState = !isOn;
+    setIsOn(newState);
+    if (onChange) onChange(newState);
+  };
+
+  return (
+    &lt;div className="toggle-container"&gt;
+      &lt;span className="toggle-label"&gt;{label}&lt;/span&gt;
+      &lt;div 
+        className={`toggle-switch ${isOn ? 'on' : 'off'}`}
+        onClick={handleToggle}
+      &gt;
+        &lt;div className="toggle-slider" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default ToggleSwitch;</code></pre>
+            </div>
+            <div class="preview-section">
+              <div class="preview-title">
+                <span class="material-icons">visibility</span>
+                Live Preview
+              </div>
+              <div class="preview-content">
+                <div style="display: flex; align-items: center; gap: 1rem">
+                  <span style="color: #1a202c; font-weight: 500"
+                    >Dark Mode</span
+                  >
+                  <div
+                    onclick="toggleDemo(this)"
+                    style="
+                      width: 50px;
+                      height: 26px;
+                      background: #cbd5e0;
+                      border-radius: 13px;
+                      position: relative;
+                      cursor: pointer;
+                      transition: all 0.3s ease;
+                    "
+                  >
+                    <div
+                      style="
+                        width: 22px;
+                        height: 22px;
+                        background: white;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 2px;
+                        left: 2px;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                      "
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="no-results hidden" id="noResults">
+          <div class="material-icons">search_off</div>
+          <h3>No examples found</h3>
+          <p>Try adjusting your search terms or filters</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <p>
+            Crafted with passion by
+            <a
+              href="https://mqs.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Muhammad S.A. Iqbal</a
+            >
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script>
+      // Search and Filter Functionality
+      const searchInput = document.getElementById("searchInput");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const exampleCards = document.querySelectorAll(".example-card");
+      const noResults = document.getElementById("noResults");
+      const examplesGrid = document.getElementById("examplesGrid");
+
+      let currentFilter = "all";
+      let currentSearch = "";
+
+      searchInput.addEventListener("input", (e) => {
+        currentSearch = e.target.value.toLowerCase().trim();
+        filterContent();
+      });
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", (e) => {
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          currentFilter = button.dataset.language;
+          filterContent();
+        });
+      });
+
+      function filterContent() {
+        let visibleCards = 0;
+
+        exampleCards.forEach((card) => {
+          const language = card.dataset.language;
+          const title = card.dataset.title.toLowerCase();
+
+          const languageMatches =
+            currentFilter === "all" || language === currentFilter;
+          const searchMatches =
+            currentSearch === "" || title.includes(currentSearch);
+
+          if (languageMatches && searchMatches) {
+            card.style.display = "block";
+            card.classList.remove("hidden");
+            visibleCards++;
+          } else {
+            card.style.display = "none";
+            card.classList.add("hidden");
+          }
+        });
+
+        if (visibleCards === 0) {
+          examplesGrid.style.display = "none";
+          noResults.classList.remove("hidden");
+        } else {
+          examplesGrid.style.display = "grid";
+          noResults.classList.add("hidden");
+        }
+      }
+
+      document.querySelectorAll(".copy-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const codeBlock = btn.closest(".example-card").querySelector("code");
+          const text = codeBlock.textContent;
+
+          navigator.clipboard.writeText(text).then(() => {
+            const icon = btn.querySelector(".material-icons");
+            const originalText = icon.textContent;
+            icon.textContent = "check";
+            btn.style.background = "var(--accent-green)";
+            btn.style.color = "white";
+
+            setTimeout(() => {
+              icon.textContent = originalText;
+              btn.style.background = "";
+              btn.style.color = "";
+            }, 2000);
+          });
+        });
+      });
+
+      document.querySelectorAll(".like-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const icon = btn.querySelector(".material-icons");
+          const isLiked = icon.textContent === "favorite";
+
+          if (isLiked) {
+            icon.textContent = "favorite_border";
+            btn.style.background = "";
+            btn.style.color = "";
+          } else {
+            icon.textContent = "favorite";
+            btn.style.background = "var(--accent-pink)";
+            btn.style.color = "white";
+          }
+        });
+      });
+
+      function startDemoCounter() {
+        const counter = document.getElementById("demoCounter");
+        let current = 0;
+        const target = 250;
+        const increment = target / 100;
+
+        function animate() {
+          if (current < target) {
+            current += increment;
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(animate);
+          } else {
+            counter.textContent = target;
+          }
+        }
+
+        counter.textContent = "0";
+        animate();
+      }
+
+      function toggleDemo(element) {
+        const slider = element.querySelector("div");
+        const isOn = element.style.background === "rgb(59, 130, 246)";
+
+        if (isOn) {
+          element.style.background = "#cbd5e0";
+          slider.style.transform = "translateX(0)";
+        } else {
+          element.style.background = "#3b82f6";
+          slider.style.transform = "translateX(24px)";
+        }
+      }
+
+      // Initialize
+      filterContent();
+    </script>
+  </body>
+</html>
