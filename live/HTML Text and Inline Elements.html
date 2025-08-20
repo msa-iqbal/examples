@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Tag Visualizer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom styles for better presentation */
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc; /* slate-50 */
+        color: #1e293b; /* slate-800 */
+      }
+      .tag-card {
+        background-color: white;
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
+          0 2px 4px -2px rgb(0 0 0 / 0.1);
+        transition: all 0.3s ease-in-out;
+        border: 1px solid #e2e8f0; /* slate-200 */
+      }
+      .tag-card:hover {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+          0 4px 6px -2px rgb(0 0 0 / 0.1);
+        transform: translateY(-2px);
+      }
+      .tag-name {
+        font-family: "Fira Code", monospace;
+        background-color: #e2e8f0; /* slate-200 */
+        color: #334155; /* slate-700 */
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.375rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+      hr {
+        margin: 1rem 0;
+        border-color: #cbd5e1; /* slate-300 */
+      }
+      code,
+      pre,
+      kbd,
+      samp {
+        font-family: "Fira Code", monospace;
+      }
+      .code-block-wrapper {
+        position: relative;
+        margin-top: 1rem;
+      }
+      pre {
+        background-color: #1e293b; /* slate-800 */
+        color: #f1f5f9; /* slate-100 */
+        padding: 1rem;
+        border-radius: 0.5rem;
+        overflow-x: auto;
+      }
+      code:not(pre > code) {
+        background-color: #f1f5f9; /* slate-100 */
+        color: #ef4444; /* red-500 */
+        padding: 0.125rem 0.375rem;
+        border-radius: 0.25rem;
+      }
+      blockquote {
+        border-left: 4px solid #64748b; /* slate-500 */
+        padding-left: 1rem;
+        margin-left: 0;
+        font-style: italic;
+        color: #475569; /* slate-600 */
+      }
+      mark {
+        background-color: #fef08a; /* yellow-200 */
+        padding: 0.1rem 0.2rem;
+        border-radius: 0.25rem;
+      }
+      kbd {
+        background-color: #334155; /* slate-700 */
+        color: white;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.375rem;
+        border: 1px solid #1e293b; /* slate-800 */
+        box-shadow: 1px 2px 1px #1e293b;
+      }
+      .example-divider {
+        margin-top: 1.25rem;
+        margin-bottom: 1.25rem;
+        border-style: dashed;
+      }
+      .copy-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #475569; /* slate-600 */
+        color: white;
+        border: none;
+        padding: 0.25rem 0.6rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .copy-btn:hover {
+        background-color: #334155; /* slate-700 */
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-6 md:p-8">
+    <header class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-bold text-slate-900">
+        HTML Tag Visualizer
+      </h1>
+      <p class="text-lg text-slate-600 mt-2">
+        A visual guide to common HTML text formatting tags with code samples.
+      </p>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+      <!-- Headings -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">
+          Headings <span class="tag-name">&lt;h1&gt;</span> to
+          <span class="tag-name">&lt;h6&gt;</span>
+        </h2>
+        <p class="text-slate-600 mb-4">
+          Heading tags define a hierarchy of titles and subtitles on a page.
+          `&lt;h1&gt;` is the most important (and there should only be one per
+          page), while `&lt;h6&gt;` is the least important.
+        </p>
+        <!-- Visual Example -->
+        <h1>h1: The most important heading</h1>
+        <h2>h2: Section heading</h2>
+        <h3>h3: Sub-section heading</h3>
+        <h4>h4: Deeper sub-section heading</h4>
+        <h5>h5: Even deeper heading</h5>
+        <h6>h6: The least important heading</h6>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;h1&gt;h1: The most important heading&lt;/h1&gt;
+&lt;h2&gt;h2: Section heading&lt;/h2&gt;
+&lt;h3&gt;h3: Sub-section heading&lt;/h3&gt;
+&lt;h4&gt;h4: Deeper sub-section heading&lt;/h4&gt;
+&lt;h5&gt;h5: Even deeper heading&lt;/h5&gt;
+&lt;h6&gt;h6: The least important heading&lt;/h6&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Paragraph and Line Breaks -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">
+          Paragraph & Breaks <span class="tag-name">&lt;p&gt;</span>,
+          <span class="tag-name">&lt;br&gt;</span>,
+          <span class="tag-name">&lt;hr&gt;</span>
+        </h2>
+        <p class="text-slate-600 mb-4">
+          The `&lt;p&gt;` tag defines a paragraph. `&lt;br&gt;` creates a line
+          break within text (use sparingly). `&lt;hr&gt;` creates a "horizontal
+          rule," representing a thematic break in content.
+        </p>
+        <!-- Visual Example 1 -->
+        <p>
+          This is a standard paragraph element, used for blocks of text. It
+          automatically adds some space before and after itself.
+        </p>
+        <!-- Code Sample 1 -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;p&gt;This is a standard paragraph element...&lt;/p&gt;</code></pre>
+        </div>
+        <hr class="example-divider" />
+        <!-- Visual Example 2 -->
+        <p>
+          This paragraph contains a line break.<br />This text appears on a new
+          line thanks to the &lt;br&gt; tag, but it's still part of the same
+          paragraph.
+        </p>
+        <!-- Code Sample 2 -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;p&gt;This paragraph contains a line break.&lt;br&gt;This text appears on a new line...&lt;/p&gt;</code></pre>
+        </div>
+        <hr class="example-divider" />
+        <!-- Visual Example 3 -->
+        <p>
+          The line below is a &lt;hr&gt; (horizontal rule), used to create a
+          thematic break between content.
+        </p>
+        <hr />
+        <!-- Code Sample 3 -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;p&gt;...break between content.&lt;/p&gt;
+&lt;hr&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Emphasis and Importance -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">Emphasis & Importance</h2>
+        <p class="text-slate-600 mb-4">
+          `&lt;strong&gt;` indicates that text has strong importance.
+          `&lt;em&gt;` places emphasis on text. While `&lt;b&gt;` (bold) and
+          `&lt;i&gt;` (italic) look similar, they are purely for styling and
+          carry no semantic meaning. `&lt;u&gt;` underlines text but should be
+          avoided so it's not confused with a link.
+        </p>
+        <p>
+          <strong>very important</strong>, <em>emphasized</em>, <b>bold</b>,
+          <i>italics</i>, and <u>underlined</u>.
+        </p>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;strong&gt;very important&lt;/strong&gt;
+&lt;em&gt;emphasized&lt;/em&gt;
+&lt;b&gt;bold&lt;/b&gt;
+&lt;i&gt;italics&lt;/i&gt;
+&lt;u&gt;underlined&lt;/u&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Text Formatting -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">Text Formatting</h2>
+        <p class="text-slate-600 mb-4">
+          `&lt;small&gt;` makes text smaller (e.g., fine print). `&lt;sup&gt;`
+          and `&lt;sub&gt;` create superscript and subscript text.
+          `&lt;mark&gt;` highlights text for reference. `&lt;wbr&gt;` provides
+          an optional line-break opportunity in a very long word.
+        </p>
+        <p>
+          <small>smaller text</small>, E=mc<sup>2</sup>, H<sub>2</sub>O,
+          <mark>highlighted</mark>, and pneumonoultramicroscopicsili<wbr />covolcanoconiosis.
+        </p>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;small&gt;smaller text&lt;/small&gt;
+E=mc&lt;sup&gt;2&lt;/sup&gt;
+H&lt;sub&gt;2&lt;/sub&gt;O
+&lt;mark&gt;highlighted&lt;/mark&gt;
+...sili&lt;wbr&gt;covolcanoconiosis</code></pre>
+        </div>
+      </div>
+
+      <!-- Semantic and Technical -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">Semantic & Technical Tags</h2>
+        <p class="text-slate-600 mb-4">
+          `&lt;abbr&gt;` defines an abbreviation, with the full term in a
+          `title` attribute. `&lt;dfn&gt;` identifies the defining instance of a
+          term. `&lt;cite&gt;` is used to reference the title of a creative work
+          (e.g., a book or painting).
+        </p>
+        <p>
+          The <abbr title="World Wide Web Consortium">W3C</abbr> sets web
+          standards. The <dfn>dfn</dfn> tag is used to indicate the defining
+          instance of a term. The painting <cite>The Starry Night</cite> was
+          created by Vincent van Gogh.
+        </p>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;abbr title="World Wide Web Consortium"&gt;W3C&lt;/abbr&gt;
+&lt;dfn&gt;dfn&lt;/dfn&gt;
+&lt;cite&gt;The Starry Night&lt;/cite&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Code and Computer Input -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">Code & Computer Input</h2>
+        <p class="text-slate-600 mb-4">
+          `&lt;code&gt;` formats a snippet of computer code. `&lt;pre&gt;`
+          preserves whitespace and line breaks, ideal for code blocks.
+          `&lt;kbd&gt;` represents keyboard input. `&lt;samp&gt;` indicates
+          sample output from a program. `&lt;var&gt;` defines a variable.
+        </p>
+        <p>
+          Use <code>document.getElementById()</code>. Press <kbd>Ctrl</kbd> +
+          <kbd>S</kbd>. Output: <samp>File not found.</samp> Variable:
+          <var>E</var>.
+        </p>
+        <pre><code>function greet() {
+    console.log("Hello, world!");
+}</code></pre>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;code&gt;document.getElementById()&lt;/code&gt;
+&lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;
+&lt;samp&gt;File not found.&lt;/samp&gt;
+&lt;var&gt;E&lt;/var&gt;
+&lt;pre&gt;&lt;code&gt;function greet() { ... }&lt;/code&gt;&lt;/pre&gt;</code></pre>
+        </div>
+      </div>
+
+      <!-- Blockquote -->
+      <div class="tag-card">
+        <h2 class="text-2xl font-bold mb-4">
+          Blockquote <span class="tag-name">&lt;blockquote&gt;</span>
+        </h2>
+        <p class="text-slate-600 mb-4">
+          The `&lt;blockquote&gt;` tag is used for extended quotations that are
+          cited from another source. Browsers typically render this as an
+          indented block of text.
+        </p>
+        <!-- Visual Example -->
+        <blockquote>
+          <p>
+            "The advance of technology is based on making it fit in so that you
+            don't really even notice it, so it's part of everyday life."
+          </p>
+          <footer>— Bill Gates in <cite>The Road Ahead</cite></footer>
+        </blockquote>
+        <!-- Code Sample -->
+        <div class="code-block-wrapper">
+          <button class="copy-btn">Copy</button>
+          <pre><code>&lt;blockquote&gt;
+    &lt;p&gt;"..."&lt;/p&gt;
+    &lt;footer&gt;— Bill Gates in &lt;cite&gt;The Road Ahead&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center mt-10 mb-4">
+      <p class="text-slate-500">A demonstration of various HTML tags.</p>
+    </footer>
+
+    <script>
+      // Simple script to handle copying code to the clipboard
+      function copyToClipboard(button) {
+        const pre = button.nextElementSibling;
+        const code = pre.querySelector("code");
+        const textToCopy = code.innerText;
+
+        // Using a temporary textarea is a robust way to copy text
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+
+        // Make the textarea invisible
+        textArea.style.position = "absolute";
+        textArea.style.left = "-9999px";
+
+        document.body.appendChild(textArea);
+        textArea.select();
+
+        try {
+          // Use the modern clipboard API if available, otherwise fallback
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+              button.innerText = "Copied!";
+            });
+          } else {
+            document.execCommand("copy");
+            button.innerText = "Copied!";
+          }
+        } catch (err) {
+          console.error("Failed to copy text: ", err);
+          button.innerText = "Error";
+        } finally {
+          // Reset button text after 2 seconds
+          setTimeout(() => {
+            button.innerText = "Copy";
+          }, 2000);
+          document.body.removeChild(textArea);
+        }
+      }
+
+      // Attach event listeners to all copy buttons once the DOM is loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        const copyButtons = document.querySelectorAll(".copy-btn");
+        copyButtons.forEach((button) => {
+          button.addEventListener("click", () => copyToClipboard(button));
+        });
+      });
+    </script>
+  </body>
+</html>
