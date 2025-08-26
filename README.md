@@ -41,23 +41,6 @@ web-quickref/
     └── settings.json
 ```
 
-## 🖥️ Live Demos
-
-Explore interactive HTML5 examples:
-
-- [Semantic Tags](live/html/html-semantic-tags.html)
-- [Text & Inline Elements](live/html/html-text-and-inline-elements.html)
-- [Links & Anchors](live/html/html-links-and-anchors.html)
-- [Colors](live/html/html-colors.html)
-- [Images](live/html/html-image.html)
-- [Image Map](live/html/html-image-map.html)
-- [Favicon](live/html/html-favicon.html)
-- [Lists](live/html/html-lists.html)
-- [Tables](live/html/html-tables.html)
-- [Forms](live/html/html-forms.html)
-- [Audio & Video](live/html/html-audio-video.html)
-- [Canvas](live/html/html-canvas.html)
-
 Open any `.html` file in the `live/html/` directory in your browser.
 
 ## 📦 Usage
