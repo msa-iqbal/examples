@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Image Maps — Web QuickRef</title>
+  <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon" />
+  <style>
+    body {
+      font-family: "Fira Code", "Consolas", monospace;
+      margin: 40px auto;
+      max-width: 900px;
+      line-height: 1.7;
+      background-color: #0d1117;
+      color: #e6edf3;
+    }
+
+    h1, h2, h3 {
+      color: #58a6ff;
+      margin-bottom: 12px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .image-map-demo, .tag-explanation {
+      padding: 16px;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      background-color: #161b22;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      display: block;
+      margin: 10px auto;
+    }
+
+    pre {
+      background-color: #161b22;
+      padding: 14px;
+      border-radius: 8px;
+      overflow-x: auto;
+      color: #d4d4d4;
+      font-size: 0.95em;
+    }
+
+    code {
+      background-color: #21262d;
+      color: #ff7b72;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    area:hover {
+      cursor: pointer;
+      outline: 2px dashed #58a6ff;
+    }
+  </style>
+</head>
+<body>
+  <h1 align="center">HTML Image Maps</h1>
+
+  <!-- Image Map Demo -->
+  <div class="section">
+    <h2>Image Map Example</h2>
+    <div class="image-map-demo">
+      <p>Click on different sections of the image below to trigger alerts:</p>
+      <img src="../../assets/images/programmer.jpg" alt="Image Map Example" usemap="#sampleMap" />
+      <map name="sampleMap">
+        <area shape="rect" coords="10,10,140,90" href="#" alt="Top Left Rectangle" title="Top Left" />
+        <area shape="circle" coords="220,100,50" href="#" alt="Center Circle" title="Center Circle" />
+        <area shape="poly" coords="10,110,140,110,75,190" href="#" alt="Bottom Triangle" title="Bottom Triangle" />
+      </map>
+    </div>
+  </div>
+
+  <!-- Example Code -->
+  <div class="section">
+    <h2>Example Code</h2>
+    <pre>
+&lt;img src="image.jpg" alt="Image Map Example" usemap="#sampleMap"&gt;
+&lt;map name="sampleMap"&gt;
+  &lt;area shape="rect" coords="10,10,140,90" href="#" alt="Top Left Rectangle" title="Top Left"&gt;
+  &lt;area shape="circle" coords="220,100,50" href="#" alt="Center Circle" title="Center Circle"&gt;
+  &lt;area shape="poly" coords="10,110,140,110,75,190" href="#" alt="Bottom Triangle" title="Bottom Triangle"&gt;
+&lt;/map&gt;
+    </pre>
+  </div>
+
+  <!-- Tag Explanations -->
+  <div class="section">
+    <h2>HTML Image Map Tags and Attributes</h2>
+
+    <div class="tag-explanation">
+      <h3><code>&lt;map&gt;</code></h3>
+      <p>Defines an image map. Contains one or more <code>&lt;area&gt;</code> elements for clickable regions.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>&lt;area&gt;</code></h3>
+      <p>Defines a clickable region. Attributes include <code>shape</code>, <code>coords</code>, and <code>href</code>.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>name</code></h3>
+      <p>In <code>&lt;map&gt;</code>, links the map to an <code>&lt;img&gt;</code> using <code>usemap</code>.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>shape</code></h3>
+      <p>Defines the clickable area. Options: <code>rect</code>, <code>circle</code>, <code>poly</code>.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>coords</code></h3>
+      <p>Specifies coordinates of the clickable area depending on <code>shape</code>.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>href</code></h3>
+      <p>Defines the link or action when a region is clicked.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>alt</code></h3>
+      <p>Provides alternative text for accessibility or if the image fails to load.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>title</code></h3>
+      <p>Shows a tooltip on hover for additional info.</p>
+    </div>
+
+    <div class="tag-explanation">
+      <h3><code>usemap</code></h3>
+      <p>In <code>&lt;img&gt;</code>, references the <code>&lt;map&gt;</code> by name.</p>
+    </div>
+  </div>
+
+  <script>
+    // Interactive demo
+    document.querySelectorAll("area").forEach(area => {
+      area.addEventListener("click", e => {
+        e.preventDefault();
+        alert(`Clicked area: ${area.title}`);
+      });
+    });
+  </script>
+</body>
+</html>

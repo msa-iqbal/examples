@@ -1,0 +1,29 @@
+{
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "editor.formatOnPaste": false,
+  "markdownlint.config": {
+    "MD001": false,
+    "MD022": false,
+    "MD024": false,
+    "MD025": false,
+    "MD032": false,
+    "MD033": false,
+    "MD036": false,
+    "MD041": false,
+    "MD042": false,
+    "MD045": false,
+    "MD051": false,
+    "MD058": false
+  },
+  "cSpell.words": [
+    "srcset",
+    "RGBA",
+    "CMYK",
+    "Geolocation",
+    "autoplay",
+    "srclang",
+    "chatbots",
+    "frontends"
+  ]
+}

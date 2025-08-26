@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Canvas — Web QuickRef</title>
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Fira Code", monospace;
+        background: linear-gradient(135deg, #1f1f1f, #121212);
+        color: #e0e0e0;
+        transition: 0.3s;
+      }
+      .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 2rem;
+      }
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+        background: linear-gradient(90deg, #61dafb, #ffb86c);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        font-size: 1.8rem;
+        color: #ff79c6;
+        margin-top: 3rem;
+      }
+      canvas {
+        border-radius: 12px;
+        border: 2px solid #61dafb;
+        display: block;
+        margin: 1rem 0;
+        background-color: #2e2e2e;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        transition: transform 0.2s;
+      }
+      canvas:hover {
+        transform: scale(1.02);
+      }
+      .card {
+        background: rgba(40, 40, 40, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid #ffb86c;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      pre {
+        background: rgba(30, 30, 30, 0.9);
+        padding: 1rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        border-left: 6px solid #61dafb;
+        margin-bottom: 1rem;
+        color: #f8f8f2;
+      }
+      code {
+        font-size: 0.95rem;
+      }
+      .toggle-btn {
+        cursor: pointer;
+        padding: 0.7rem 1.5rem;
+        background: linear-gradient(90deg, #ff79c6, #61dafb);
+        color: #121212;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        display: block;
+        margin: 0 auto 3rem auto;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .toggle-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+      body.light {
+        background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+        color: #1e1e1e;
+      }
+      body.light canvas {
+        background-color: #fff;
+        border-color: #1e1e1e;
+      }
+      body.light pre {
+        background: rgba(240, 240, 240, 0.9);
+        border-left-color: #1e1e1e;
+        color: #1e1e1e;
+      }
+      body.light .card {
+        background: rgba(255, 255, 255, 0.7);
+        color: #1e1e1e;
+        border-left-color: #ff79c6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>HTML Canvas</h1>
+      <button class="toggle-btn" onclick="toggleDarkMode()">
+        Toggle Dark/Light Mode
+      </button>
+
+      <!-- Shapes -->
+      <h2>Drawing Shapes</h2>
+      <canvas id="shapeCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('shapeCanvas').getContext('2d');
+ctx.fillStyle = 'orange';
+ctx.fillRect(20,20,100,50);
+ctx.strokeStyle = 'red';
+ctx.strokeRect(150,20,100,50);
+ctx.beginPath();
+ctx.moveTo(50,150);
+ctx.lineTo(150,150);
+ctx.lineTo(100,100);
+ctx.closePath();
+ctx.fillStyle = 'lime';
+ctx.fill();
+ctx.stroke();</code></pre>
+        <p>
+          Draws rectangles and a triangle using fillRect, strokeRect, and paths.
+        </p>
+      </div>
+
+      <!-- Text -->
+      <h2>Drawing Text</h2>
+      <canvas id="textCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('textCanvas').getContext('2d');
+ctx.font = '24px Fira Code';
+ctx.fillStyle = 'lime';
+ctx.fillText('Hello Canvas!', 50,100);
+ctx.strokeStyle = 'orange';
+ctx.strokeText('Outline Text',50,150);</code></pre>
+        <p>Draws filled and outlined text on canvas.</p>
+      </div>
+
+      <!-- Images -->
+      <h2>Images</h2>
+      <canvas id="imageCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('imageCanvas').getContext('2d');
+const img = new Image();
+img.src = 'https://via.placeholder.com/150';
+img.onload = () =&gt; {
+  ctx.drawImage(img,50,25,150,150);
+};</code></pre>
+        <p>Loads and draws an image onto the canvas.</p>
+      </div>
+
+      <!-- Transformations -->
+      <h2>Transformations</h2>
+      <canvas id="transCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('transCanvas').getContext('2d');
+ctx.fillStyle = 'skyblue';
+ctx.translate(200,100);
+ctx.rotate(Math.PI/6);
+ctx.fillRect(-50,-25,100,50);</code></pre>
+        <p>Moves origin, rotates, then draws rectangle.</p>
+      </div>
+
+      <!-- Gradients -->
+      <h2>Colors & Gradients</h2>
+      <canvas id="gradCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('gradCanvas').getContext('2d');
+const grad = ctx.createLinearGradient(0,0,400,0);
+grad.addColorStop(0,'red');
+grad.addColorStop(1,'blue');
+ctx.fillStyle = grad;
+ctx.fillRect(0,0,400,200);</code></pre>
+        <p>Linear gradient from red to blue fills the rectangle.</p>
+      </div>
+
+      <!-- Animation -->
+      <h2>Animation</h2>
+      <canvas id="animCanvas" width="400" height="200"></canvas>
+      <div class="card">
+        <pre><code>let x=0;
+function animate(){
+  ctx.clearRect(0,0,400,200);
+  ctx.fillStyle='orange';
+  ctx.fillRect(x,80,50,50);
+  x+=2;
+  if(x&gt;400)x=-50;
+  requestAnimationFrame(animate);
+}
+animate();</code></pre>
+        <p>Animating rectangle moving horizontally.</p>
+      </div>
+
+      <!-- Pixel Manipulation -->
+      <h2>Pixel Manipulation</h2>
+      <canvas id="pixelCanvas" width="200" height="200"></canvas>
+      <div class="card">
+        <pre><code>const ctx = document.getElementById('pixelCanvas').getContext('2d');
+const imgData = ctx.createImageData(200,200);
+for(let i=0;i&lt;imgData.data.length;i+=4){
+  imgData.data[i]=Math.random()*255;
+  imgData.data[i+1]=Math.random()*255;
+  imgData.data[i+2]=Math.random()*255;
+  imgData.data[i+3]=255;
+}
+ctx.putImageData(imgData,0,0);</code></pre>
+        <p>Random colors assigned to each pixel and rendered.</p>
+      </div>
+    </div>
+
+    <script>
+      // Shapes
+      const shapeCtx = document.getElementById("shapeCanvas").getContext("2d");
+      shapeCtx.fillStyle = "orange";
+      shapeCtx.fillRect(20, 20, 100, 50);
+      shapeCtx.strokeStyle = "red";
+      shapeCtx.strokeRect(150, 20, 100, 50);
+      shapeCtx.beginPath();
+      shapeCtx.moveTo(50, 150);
+      shapeCtx.lineTo(150, 150);
+      shapeCtx.lineTo(100, 100);
+      shapeCtx.closePath();
+      shapeCtx.fillStyle = "lime";
+      shapeCtx.fill();
+      shapeCtx.stroke();
+
+      // Text
+      const textCtx = document.getElementById("textCanvas").getContext("2d");
+      textCtx.font = "24px Fira Code";
+      textCtx.fillStyle = "lime";
+      textCtx.fillText("Hello Canvas!", 50, 100);
+      textCtx.strokeStyle = "orange";
+      textCtx.strokeText("Outline Text", 50, 150);
+
+      // Image
+      const imageCtx = document.getElementById("imageCanvas").getContext("2d");
+      const img = new Image();
+      img.src = "https://via.placeholder.com/150";
+      img.onload = () => {
+        imageCtx.drawImage(img, 50, 25, 150, 150);
+      };
+
+      // Transformations
+      const transCtx = document.getElementById("transCanvas").getContext("2d");
+      transCtx.fillStyle = "skyblue";
+      transCtx.translate(200, 100);
+      transCtx.rotate(Math.PI / 6);
+      transCtx.fillRect(-50, -25, 100, 50);
+
+      // Gradient
+      const gradCtx = document.getElementById("gradCanvas").getContext("2d");
+      const grad = gradCtx.createLinearGradient(0, 0, 400, 0);
+      grad.addColorStop(0, "red");
+      grad.addColorStop(1, "blue");
+      gradCtx.fillStyle = grad;
+      gradCtx.fillRect(0, 0, 400, 200);
+
+      // Animation
+      const animCtx = document.getElementById("animCanvas").getContext("2d");
+      let x = 0;
+      function animate() {
+        animCtx.clearRect(0, 0, 400, 200);
+        animCtx.fillStyle = "orange";
+        animCtx.fillRect(x, 80, 50, 50);
+        x += 2;
+        if (x > 400) x = -50;
+        requestAnimationFrame(animate);
+      }
+      animate();
+
+      // Pixel manipulation
+      const pixelCtx = document.getElementById("pixelCanvas").getContext("2d");
+      const imgData = pixelCtx.createImageData(200, 200);
+      for (let i = 0; i < imgData.data.length; i += 4) {
+        imgData.data[i] = Math.random() * 255;
+        imgData.data[i + 1] = Math.random() * 255;
+        imgData.data[i + 2] = Math.random() * 255;
+        imgData.data[i + 3] = 255;
+      }
+      pixelCtx.putImageData(imgData, 0, 0);
+
+      // Dark mode toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle("light");
+      }
+    </script>
+  </body>
+</html>

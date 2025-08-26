@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Semantic Tags Visualization — Web QuickRef</title>
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+    
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background-color: #1a1a1a;
+        color: #e2e8f0;
+        margin: 0;
+        padding: 2rem;
+      }
+      .semantic-tag {
+        border: 2px dashed #4a5568;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        border-radius: 0.5rem;
+        position: relative;
+        background-color: #2d2d2d;
+      }
+      .semantic-tag::before {
+        content: "<" attr(data-tag-name) ">";
+        position: absolute;
+        top: -0.75rem;
+        left: 0.5rem;
+        background-color: #4a5568;
+        color: #e2e8f0;
+        padding: 0.1rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        font-family: "JetBrains Mono", "Fira Code", "Consolas", "Courier New",
+          monospace;
+      }
+      header,
+      main,
+      aside,
+      section,
+      article,
+      footer,
+      details,
+      summary,
+      figure,
+      figcaption,
+      time {
+        display: block;
+      }
+      header h1,
+      main h2,
+      section h3,
+      article h4 {
+        margin: 0.5rem 0;
+        color: #f7fafc;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+      }
+      nav a,
+      aside a {
+        text-decoration: none;
+        color: #60a5fa;
+      }
+      nav a:hover,
+      aside a:hover {
+        text-decoration: underline;
+        color: #93c5fd;
+      }
+      aside ul {
+        list-style: disc inside;
+        padding-left: 0;
+      }
+      button {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        background-color: #60a5fa;
+        color: #e2e8f0;
+        transition: background-color 0.2s ease;
+      }
+      button:hover {
+        background-color: #3b82f6;
+      }
+      dialog {
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        max-width: 600px;
+        background-color: #2d2d2d;
+        color: #e2e8f0;
+      }
+      dialog div {
+        padding: 1rem;
+      }
+      dialog button {
+        background-color: #4a5568;
+        margin-top: 1rem;
+      }
+      dialog button:hover {
+        background-color: #718096;
+      }
+      mark {
+        background-color: #d69e2e;
+        color: #1a1a1a;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="slot-template">
+      <div
+        style="
+          border-left: 4px solid #60a5fa;
+          padding-left: 1rem;
+          font-style: italic;
+          color: #94a3b8;
+        "
+      >
+        <p>This content comes from a template.</p>
+        <slot name="template-slot"></slot>
+      </div>
+    </template>
+
+    <header data-tag-name="header" class="semantic-tag">
+      <h1>Website Header</h1>
+      <p>This is the <code>&lt;header&gt;</code> area.</p>
+      <nav data-tag-name="nav" class="semantic-tag">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem">
+      <main data-tag-name="main" class="semantic-tag" style="flex: 2">
+        <h2>Main Content</h2>
+        <p>This is the <code>&lt;main&gt;</code> content.</p>
+
+        <section data-tag-name="section" class="semantic-tag">
+          <h3>A Thematic Section</h3>
+          <p>
+            The <code>&lt;section&gt;</code> tag groups related content
+            together.
+          </p>
+
+          <article data-tag-name="article" class="semantic-tag">
+            <h4>Article Title</h4>
+            <p>
+              The <code>&lt;article&gt;</code> tag represents self-contained
+              content.
+              <mark data-tag-name="mark">Highlighted text</mark>
+            </p>
+            <p>
+              Published on:
+              <time data-tag-name="time" datetime="2025-08-16"
+                >August 16, 2025</time
+              >
+            </p>
+
+            <figure data-tag-name="figure" class="semantic-tag">
+              <img
+                src="https://placehold.co/600x300/2d2d2d/e2e8f0?text=Placeholder+Image"
+                alt="Placeholder Image"
+                style="width: 100%; border-radius: 0.25rem"
+              />
+              <figcaption
+                data-tag-name="figcaption"
+                class="semantic-tag"
+                style="
+                  text-align: center;
+                  font-size: 0.875rem;
+                  background: #3a3a3a;
+                "
+              >
+                Figcaption for the image
+              </figcaption>
+            </figure>
+          </article>
+        </section>
+
+        <section data-tag-name="section" class="semantic-tag">
+          <h3>Interactive Elements</h3>
+          <details data-tag-name="details" class="semantic-tag">
+            <summary data-tag-name="summary" class="semantic-tag">
+              Click to see more details
+            </summary>
+            <p>Hidden content revealed on click.</p>
+          </details>
+          <button id="showDialogBtn">Show Dialog</button>
+        </section>
+      </main>
+
+      <aside data-tag-name="aside" class="semantic-tag" style="flex: 1">
+        <h3>Aside</h3>
+        <p>The <code>&lt;aside&gt;</code> contains tangential content.</p>
+        <ul>
+          <li><a href="#">Related Link 1</a></li>
+          <li><a href="#">Related Link 2</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <footer
+      data-tag-name="footer"
+      class="semantic-tag"
+      style="text-align: center; margin-top: 1rem"
+    >
+      <p>&copy; 2025 Semantic HTML Demo. Footer content.</p>
+    </footer>
+
+    <dialog id="infoDialog" data-tag-name="dialog">
+      <div>
+        <h3>Dialog Example</h3>
+        <p>Opened and closed using JavaScript.</p>
+        <div id="template-content-host"></div>
+        <button id="closeDialogBtn">Close</button>
+      </div>
+    </dialog>
+
+    <script>
+      const showDialogBtn = document.getElementById("showDialogBtn");
+      const closeDialogBtn = document.getElementById("closeDialogBtn");
+      const infoDialog = document.getElementById("infoDialog");
+      const template = document.getElementById("slot-template");
+      const host = document.getElementById("template-content-host");
+
+      host.appendChild(template.content.cloneNode(true));
+
+      showDialogBtn.addEventListener("click", () => infoDialog.showModal());
+      closeDialogBtn.addEventListener("click", () => infoDialog.close());
+      infoDialog.addEventListener("click", (e) => {
+        if (e.target === infoDialog) infoDialog.close();
+      });
+    </script>
+  </body>
+</html>

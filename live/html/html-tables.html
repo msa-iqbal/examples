@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Tables — Web QuickRef</title>
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+<style>
+  /* Base Dark Mode */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    line-height: 1.6;
+  }
+
+  /* Centered container */
+  .container {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+  h2 {
+    font-size: 1.7rem;
+    color: #f0f0f0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+
+  /* Card-like sections */
+  .table-section {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    border: solid 1px #0e4449;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+  }
+  th, td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #2c2c2c;
+    font-weight: bold;
+    color: #61dafb;
+  }
+  caption {
+    caption-side: top;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: #ffffff;
+  }
+
+  /* Code blocks */
+  pre {
+    background-color: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin-top: 15px;
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+    user-select: none; /* Prevent selection */
+    border: solid 1px #1b3437;
+  }
+  code {
+    
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+        background: #2d2a2a;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 750px) {
+    body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>HTML Tables</h1>
+
+<!-- Basic Table -->
+<div class="table-section">
+  <h2>Basic Table Structure</h2>
+  <p>The core elements for a table: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code>.</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+    </tr>
+    <tr>
+      <td>John</td>
+      <td>25</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>Jane</td>
+      <td>30</td>
+      <td>Los Angeles</td>
+    </tr>
+  </table>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Age&lt;/th&gt;
+        &lt;th&gt;City&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;John&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+        &lt;td&gt;New York&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Jane&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+        &lt;td&gt;Los Angeles&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+<!-- Table Attributes -->
+<div class="table-section">
+  <h2>Table Attributes</h2>
+  <p>Attributes like <code>border</code>, <code>cellpadding</code>, and <code>cellspacing</code> control table appearance.</p>
+  <table border="1" cellpadding="10" cellspacing="5">
+    <tr>
+      <th>Employee</th>
+      <th>Department</th>
+      <th>Role</th>
+    </tr>
+    <tr>
+      <td>Alice</td>
+      <td>HR</td>
+      <td>Manager</td>
+    </tr>
+  </table>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;table border="1" cellpadding="10" cellspacing="5"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Employee&lt;/th&gt;
+        &lt;th&gt;Department&lt;/th&gt;
+        &lt;th&gt;Role&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Alice&lt;/td&gt;
+        &lt;td&gt;HR&lt;/td&gt;
+        &lt;td&gt;Manager&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+<!-- Table Sections -->
+<div class="table-section">
+  <h2>Table Sections (thead, tbody, tfoot)</h2>
+  <p>These tags improve table structure and accessibility for complex tables.</p>
+  <table cellpadding="8" cellspacing="2">
+    <caption>Order Summary</caption>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Book</td>
+        <td>$20</td>
+      </tr>
+      <tr>
+        <td>Notebook</td>
+        <td>$5</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td>$25</td>
+      </tr>
+    </tfoot>
+  </table>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;table&gt;
+    &lt;caption&gt;Order Summary&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;&lt;th&gt;Item&lt;/th&gt;&lt;th&gt;Cost&lt;/th&gt;&lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Book&lt;/td&gt;&lt;td&gt;$20&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Notebook&lt;/td&gt;&lt;td&gt;$5&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;&lt;td&gt;Total&lt;/td&gt;&lt;td&gt;$25&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+<!-- Merging Cells -->
+<div class="table-section">
+  <h2>Merging Cells (colspan, rowspan)</h2>
+  <p>Use <code>colspan</code> and <code>rowspan</code> to create complex layouts.</p>
+  <table cellpadding="10" cellspacing="3">
+    <caption>Project Timeline</caption>
+    <tr>
+      <th rowspan="2">Phase</th>
+      <th colspan="2">Duration</th>
+    </tr>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+    <tr>
+      <td>Planning</td>
+      <td>Jan 2025</td>
+      <td>Feb 2025</td>
+    </tr>
+    <tr>
+      <td>Execution</td>
+      <td>Mar 2025</td>
+      <td>Jun 2025</td>
+    </tr>
+  </table>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;table&gt;
+    &lt;caption&gt;Project Timeline&lt;/caption&gt;
+    &lt;tr&gt;&lt;th rowspan="2"&gt;Phase&lt;/th&gt;&lt;th colspan="2"&gt;Duration&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;th&gt;Start&lt;/th&gt;&lt;th&gt;End&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Planning&lt;/td&gt;&lt;td&gt;Jan 2025&lt;/td&gt;&lt;td&gt;Feb 2025&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Execution&lt;/td&gt;&lt;td&gt;Mar 2025&lt;/td&gt;&lt;td&gt;Jun 2025&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+<!-- Table Caption -->
+<div class="table-section">
+  <h2>Table Caption</h2>
+  <p>The <code>&lt;caption&gt;</code> tag provides a title for your table.</p>
+  <table cellpadding="6" cellspacing="2">
+    <caption>Student Grades</caption>
+    <tr>
+      <th>Name</th>
+      <th>Grade</th>
+    </tr>
+    <tr>
+      <td>Bob</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>Sarah</td>
+      <td>B</td>
+    </tr>
+  </table>
+  <pre><code style="background-color: #1b1b1b;"></code>
+&lt;table&gt;
+    &lt;caption&gt;Student Grades&lt;/caption&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Grade&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Bob&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Sarah&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+  </code></pre>
+</div>
+
+</div>
+</body>
+</html>

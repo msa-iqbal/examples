@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms — Web QuickRef</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+    <style>
+      body {
+        font-family: "Fira Code", Consolas, "Courier New", monospace;
+        line-height: 1.6;
+        margin: 0;
+        padding: 40px;
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      h1,
+      h2 {
+        color: #ffffff;
+        font-weight: 600;
+      }
+      h1 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        background: #1a1a1a;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
+
+      .form-section {
+        margin-bottom: 40px;
+        border-bottom: 1px solid #333;
+        padding-bottom: 20px;
+      }
+
+      form {
+        margin: 15px 0;
+        padding: 20px;
+        background: #1f1f1f;
+        border: 1px solid #333;
+        border-radius: 8px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #cbd5e0;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border: 1px solid #555;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1rem;
+        background-color: #121212;
+        color: #e0e0e0;
+        transition: border-color 0.2s ease;
+      }
+
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #61dafb;
+        box-shadow: 0 0 0 3px rgba(97, 218, 251, 0.2);
+      }
+
+      /* input:invalid {
+        border-color: #e53e3e;
+      }
+ */
+      .checkbox-group,
+      .radio-group {
+        margin-bottom: 12px;
+      }
+      .checkbox-group label,
+      .radio-group label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        font-weight: 400;
+      }
+      .checkbox-group input,
+      .radio-group input {
+        width: auto;
+        margin-right: 8px;
+        margin-bottom: 0;
+      }
+
+      .error {
+        color: #e53e3e;
+        font-size: 0.875rem;
+        margin-bottom: 12px;
+        display: none;
+      }
+
+      button {
+        background: #61dafb;
+        color: #121212;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: background 0.2s ease;
+      }
+      button:hover {
+        background: #21a1f1;
+      }
+
+      pre {
+        background: #1b1b1b;
+        padding: 20px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin-top: 15px;
+        border: 1px solid #333;
+      }
+
+      code {
+        font-family: "Fira Code", Consolas, monospace;
+        font-size: 0.9rem;
+        color: #e0e0e0;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 20px;
+        }
+        .container {
+          padding: 20px;
+        }
+        form {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 align="center">HTML Forms</h1>
+
+      <!-- Form -->
+      <div class="form-section">
+        <h2>Form (&lt;form&gt;)</h2>
+        <p>
+          The &lt;form&gt; tag defines a container for user inputs. Attributes
+          like <code>action</code> and <code>method</code> control submission.
+        </p>
+        <form action="/submit" method="post">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required />
+          <span class="error" id="username-error">Username is required.</span>
+          <button type="submit">Submit</button>
+        </form>
+        <pre><code>&lt;form action="/submit" method="post"&gt;
+  &lt;label for="username"&gt;Username:&lt;/label&gt;
+  &lt;input type="text" id="username" name="username" required&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Input -->
+      <div class="form-section">
+        <h2>Input (&lt;input&gt;)</h2>
+        <p>
+          The &lt;input&gt; tag creates fields like text, email, password, etc.
+          Attributes like <code>required</code> enforce validation.
+        </p>
+        <form>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+          />
+          <span class="error" id="email-error"
+            >Please enter a valid email address.</span
+          >
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            minlength="8"
+          />
+          <span class="error" id="password-error"
+            >Password must be at least 8 characters long.</span
+          >
+          <button type="submit">Login</button>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" required placeholder="Enter your email"&gt;
+  &lt;label for="password"&gt;Password:&lt;/label&gt;
+  &lt;input type="password" id="password" name="password" required minlength="8"&gt;
+  &lt;button type="submit"&gt;Login&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Checkbox, Radio, Number, File -->
+      <div class="form-section">
+        <h2>Form Input Elements</h2>
+        <form>
+          <label>Hobbies:</label>
+          <div class="checkbox-group">
+            <label
+              ><input type="checkbox" name="hobbies" value="reading" />
+              Reading</label
+            >
+            <label
+              ><input type="checkbox" name="hobbies" value="gaming" />
+              Gaming</label
+            >
+          </div>
+          <label>Gender:</label>
+          <div class="radio-group">
+            <label
+              ><input type="radio" name="gender" value="male" required />
+              Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="female" /> Female</label
+            >
+          </div>
+          <label for="age">Age:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            min="18"
+            max="100"
+            required
+          />
+          <span class="error" id="age-error"
+            >Age must be between 18 and 100.</span
+          >
+          <label for="resume">Upload Resume:</label>
+          <input type="file" id="resume" name="resume" accept=".pdf" />
+          <span class="error" id="resume-error">Please upload a PDF file.</span>
+          <button type="submit">Submit</button>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;label&gt;Hobbies:&lt;/label&gt;
+  &lt;div&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="hobbies" value="reading"&gt; Reading&lt;/label&gt;
+    &lt;label&gt;&lt;input type="checkbox" name="hobbies" value="gaming"&gt; Gaming&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label&gt;Gender:&lt;/label&gt;
+  &lt;div&gt;
+    &lt;label&gt;&lt;input type="radio" name="gender" value="male" required&gt; Male&lt;/label&gt;
+    &lt;label&gt;&lt;input type="radio" name="gender" value="female"&gt; Female&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label for="age"&gt;Age:&lt;/label&gt;
+  &lt;input type="number" id="age" name="age" min="18" max="100" required&gt;
+  &lt;label for="resume"&gt;Upload Resume:&lt;/label&gt;
+  &lt;input type="file" id="resume" name="resume" accept=".pdf"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Label -->
+      <div class="form-section">
+        <h2>Label (&lt;label&gt;)</h2>
+        <form>
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required />
+          <span class="error" id="name-error">Name is required.</span>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;label for="name"&gt;Full Name:&lt;/label&gt;
+  &lt;input type="text" id="name" name="name" required&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Select -->
+      <div class="form-section">
+        <h2>Select (&lt;select&gt;)</h2>
+        <form>
+          <label for="country">Country:</label>
+          <select id="country" name="country" required>
+            <option value="">Select a country</option>
+            <option value="usa">USA</option>
+            <option value="canada">Canada</option>
+            <option value="uk">UK</option>
+          </select>
+          <span class="error" id="country-error">Please select a country.</span>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;label for="country"&gt;Country:&lt;/label&gt;
+  &lt;select id="country" name="country" required&gt;
+    &lt;option value=""&gt;Select a country&lt;/option&gt;
+    &lt;option value="usa"&gt;USA&lt;/option&gt;
+    &lt;option value="canada"&gt;Canada&lt;/option&gt;
+    &lt;option value="uk"&gt;UK&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Textarea -->
+      <div class="form-section">
+        <h2>Textarea (&lt;textarea&gt;)</h2>
+        <form>
+          <label for="comments">Comments:</label>
+          <textarea
+            id="comments"
+            name="comments"
+            rows="4"
+            cols="50"
+            placeholder="Enter your comments"
+            required
+          ></textarea>
+          <span class="error" id="comments-error">Comments are required.</span>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;label for="comments"&gt;Comments:&lt;/label&gt;
+  &lt;textarea id="comments" name="comments" rows="4" cols="50" placeholder="Enter your comments" required&gt;&lt;/textarea&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Buttons -->
+      <div class="form-section">
+        <h2>Button (&lt;button&gt;)</h2>
+        <form>
+          <button type="submit">Submit Form</button>
+          <button type="reset">Reset Form</button>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;button type="submit"&gt;Submit Form&lt;/button&gt;
+  &lt;button type="reset"&gt;Reset Form&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Fieldset & Legend -->
+      <div class="form-section">
+        <h2>Fieldset and Legend (&lt;fieldset&gt; and &lt;legend&gt;)</h2>
+        <form>
+          <fieldset>
+            <legend>User Information</legend>
+            <label for="fname">First Name:</label>
+            <input type="text" id="fname" name="fname" required />
+            <span class="error" id="fname-error">First name is required.</span>
+            <label for="lname">Last Name:</label>
+            <input type="text" id="lname" name="lname" required />
+            <span class="error" id="lname-error">Last name is required.</span>
+          </fieldset>
+        </form>
+        <pre><code>&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;User Information&lt;/legend&gt;
+    &lt;label for="fname"&gt;First Name:&lt;/label&gt;
+    &lt;input type="text" id="fname" name="fname" required&gt;
+    &lt;label for="lname"&gt;Last Name:&lt;/label&gt;
+    &lt;input type="text" id="lname" name="lname" required&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <!-- Validation -->
+      <div class="form-section">
+        <h2>Form Validation</h2>
+        <form id="validation-form">
+          <label for="phone">Phone Number (123-456-7890):</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="123-456-7890"
+            required
+          />
+          <span class="error" id="phone-error"
+            >Please enter a valid phone number (e.g., 123-456-7890).</span
+          >
+          <label for="birthdate">Birth Date:</label>
+          <input type="date" id="birthdate" name="birthdate" required />
+          <span class="error" id="birthdate-error"
+            >Please enter a valid date.</span
+          >
+          <button type="submit">Submit</button>
+        </form>
+        <pre><code>&lt;form id="validation-form"&gt;
+  &lt;label for="phone"&gt;Phone Number (123-456-7890):&lt;/label&gt;
+  &lt;input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required&gt;
+  &lt;label for="birthdate"&gt;Birth Date:&lt;/label&gt;
+  &lt;input type="date" id="birthdate" name="birthdate" required&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll("form").forEach((form) => {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          let isValid = true;
+          const inputs = form.querySelectorAll("input, select, textarea");
+          inputs.forEach((input) => {
+            const errorElement = document.getElementById(`${input.id}-error`);
+            if (errorElement) {
+              if (!input.checkValidity()) {
+                errorElement.style.display = "block";
+                isValid = false;
+              } else {
+                errorElement.style.display = "none";
+              }
+            }
+          });
+          if (isValid) {
+            alert("Form is valid! Submission prevented for demonstration.");
+          }
+        });
+
+        form.querySelectorAll("input, select, textarea").forEach((input) => {
+          input.addEventListener("input", () => {
+            const errorElement = document.getElementById(`${input.id}-error`);
+            if (errorElement) {
+              if (input.checkValidity()) errorElement.style.display = "none";
+              else errorElement.style.display = "block";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

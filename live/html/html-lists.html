@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Lists — Web QuickRef</title>
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+<style>
+  /* Base Dark Mode Styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.7;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Centered Container */
+  .container {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 40px;
+    color: #ffffff;
+  }
+  h2 {
+    font-size: 1.7rem;
+    color: #f0f0f0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+  h3 {
+    font-size: 1.3rem;
+    color: #cfcfcf;
+    margin-bottom: 10px;
+  }
+
+  /* Section Cards */
+  .list-section, .nested-section {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.2s, background-color 0.2s;
+    border: solid 1px #3d5257;
+  }
+ /*  .list-section:hover, .nested-section:hover {
+    transform: translateY(-3px);
+    background-color: #22222a;
+  } */
+
+  /* Lists */
+  ul, ol, dl {
+    margin: 10px 0;
+    padding-left: 25px;
+  }
+  dt {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #61dafb;
+  }
+  dd {
+    margin: 5px 0 10px 20px;
+  }
+
+  /* Code Blocks */
+  pre {
+    background-color: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin-top: 15px;
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+    border: solid 1px #253f49;
+  }
+  code {
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    background-color: #2b2f35;
+  }
+
+  /* Responsive */
+  @media (max-width: 750px) {
+    body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>HTML Lists</h1>
+
+<!-- Unordered List -->
+<div class="list-section">
+  <h2>Unordered List (<code>&lt;ul&gt;</code>)</h2>
+  <p>The <code>&lt;ul&gt;</code> tag defines an unordered (bulleted) list, used for items where order does not matter. Each item is defined using <code>&lt;li&gt;</code>.</p>
+  <ul>
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Oranges</li>
+  </ul>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;ul&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Bananas&lt;/li&gt;
+    &lt;li&gt;Oranges&lt;/li&gt;
+&lt;/ul&gt;
+  </code></pre>
+
+  <div class="nested-section">
+    <h3>Nested Unordered List</h3>
+    <p>Nested <code>&lt;ul&gt;</code> tags can create hierarchical sublists.</p>
+    <ul>
+      <li>Fruits
+        <ul>
+          <li>Apples</li>
+          <li>Bananas</li>
+          <li>Oranges</li>
+        </ul>
+      </li>
+      <li>Vegetables
+        <ul>
+          <li>Carrots</li>
+          <li>Broccoli</li>
+        </ul>
+      </li>
+    </ul>
+    <pre><code style="background-color: #1b1b1b;"></code>
+&lt;ul&gt;
+    &lt;li&gt;Fruits
+        &lt;ul&gt;
+            &lt;li&gt;Apples&lt;/li&gt;
+            &lt;li&gt;Bananas&lt;/li&gt;
+            &lt;li&gt;Oranges&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Vegetables
+        &lt;ul&gt;
+            &lt;li&gt;Carrots&lt;/li&gt;
+            &lt;li&gt;Broccoli&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+    </code></pre>
+  </div>
+</div>
+
+<!-- Ordered List -->
+<div class="list-section">
+  <h2>Ordered List (<code>&lt;ol&gt;</code>)</h2>
+  <p>The <code>&lt;ol&gt;</code> tag defines a numbered list, used when order matters.</p>
+  <ol>
+    <li>First step</li>
+    <li>Second step</li>
+    <li>Third step</li>
+  </ol>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;ol&gt;
+    &lt;li&gt;First step&lt;/li&gt;
+    &lt;li&gt;Second step&lt;/li&gt;
+    &lt;li&gt;Third step&lt;/li&gt;
+&lt;/ol&gt;
+  </code></pre>
+
+  <div class="nested-section">
+    <h3>Nested Ordered List</h3>
+    <p>Nested <code>&lt;ol&gt;</code> tags create sublists with their own numbering.</p>
+    <ol>
+      <li>Project Planning
+        <ol>
+          <li>Define objectives</li>
+          <li>Identify resources</li>
+        </ol>
+      </li>
+      <li>Execution
+        <ol>
+          <li>Develop tasks</li>
+          <li>Monitor progress</li>
+        </ol>
+      </li>
+    </ol>
+    <pre><code style="background-color: #1b1b1b;">
+&lt;ol&gt;
+    &lt;li&gt;Project Planning
+        &lt;ol&gt;
+            &lt;li&gt;Define objectives&lt;/li&gt;
+            &lt;li&gt;Identify resources&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Execution
+        &lt;ol&gt;
+            &lt;li&gt;Develop tasks&lt;/li&gt;
+            &lt;li&gt;Monitor progress&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;
+    </code></pre>
+  </div>
+</div>
+
+<!-- Description List -->
+<div class="list-section">
+  <h2>Description List (<code>&lt;dl&gt;</code>)</h2>
+  <p>The <code>&lt;dl&gt;</code> tag defines terms and their descriptions using <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code>.</p>
+  <dl>
+    <dt>HTML</dt>
+    <dd>HyperText Markup Language, used for structuring content.</dd>
+    <dt>CSS</dt>
+    <dd>Cascading Style Sheets, used for styling content.</dd>
+  </dl>
+  <pre><code style="background-color: #1b1b1b;">
+&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language, used for structuring content.&lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets, used for styling content.&lt;/dd&gt;
+&lt;/dl&gt;
+  </code></pre>
+
+  <div class="nested-section">
+    <h3>Nested Description List</h3>
+    <p>Nested lists like <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> can be inside <code>&lt;dd&gt;</code> for more detail.</p>
+    <dl>
+      <dt>HTML</dt>
+      <dd>
+        HyperText Markup Language
+        <ul>
+          <li>Tags: Define structure</li>
+          <li>Attributes: Provide extra info</li>
+        </ul>
+      </dd>
+      <dt>CSS</dt>
+      <dd>
+        Cascading Style Sheets
+        <ul>
+          <li>Selectors: Target elements</li>
+          <li>Properties: Define styles</li>
+        </ul>
+      </dd>
+    </dl>
+    <pre><code style="background-color: #1b1b1b;">
+&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language
+        &lt;ul&gt;
+            &lt;li&gt;Tags: Define structure&lt;/li&gt;
+            &lt;li&gt;Attributes: Provide extra info&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/dd&gt;
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets
+        &lt;ul&gt;
+            &lt;li&gt;Selectors: Target elements&lt;/li&gt;
+            &lt;li&gt;Properties: Define styles&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/dd&gt;
+&lt;/dl&gt;
+    </code></pre>
+  </div>
+</div>
+
+</div> <!-- container -->
+</body>
+</html>

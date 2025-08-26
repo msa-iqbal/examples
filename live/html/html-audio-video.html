@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Audio & Video — Web QuickRef</title>
+<link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+<style>
+  /* Base Dark Mode Styles */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f111a;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.7;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Centered Container */
+  .container {
+    max-width: 1000px;
+    width: 100%;
+  }
+
+  a { color: #61dafb; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Headings */
+  h1 {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+  h2 {
+    font-size: 1.7rem;
+    color: #f0f0f0;
+    border-bottom: 2px solid #333;
+    padding-bottom: 5px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+  }
+  h3 { font-size: 1.3rem; color: #cfcfcf; margin-bottom: 10px; }
+
+  /* Media Cards */
+  .media-demo {
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  }
+  video, audio {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 15px;
+    border-radius: 8px;
+    background-color: #000;
+    display: block;
+  }
+  figure {
+    margin: 25px 0;
+    padding: 15px;
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    border: 1px solid #333;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+  figcaption {
+    text-align: center;
+    font-style: italic;
+    color: #aaa;
+    margin-top: 8px;
+    font-size: 0.95rem;
+  }
+
+  /* Code Section */
+  pre {
+    background-color: #1b1b1b;
+    padding: 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 8px rgba(255,255,255,0.05);
+  }
+  code {
+    background-color: #2b2b2b;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+  }
+
+  /* Tag Explanation Cards */
+  .tag-explanation {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #61dafb;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+
+  /* Responsive */
+  @media (max-width: 750px) {
+    body { padding: 20px; }
+    video, audio { max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>HTML Audio & Video</h1>
+
+<h2>Audio & Video Examples</h2>
+<div class="media-demo">
+  <p>Audio Player Example:</p>
+  <audio controls>
+    <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <p>Responsive Video Player with Subtitles:</p>
+  <figure>
+    <video controls>
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+      <track src="https://www.w3schools.com/html/subtitles.srt" kind="subtitles" srclang="en" label="English">
+      Your browser does not support the video element.
+    </video>
+    <figcaption>Sample Video with Subtitles</figcaption>
+  </figure>
+</div>
+
+<h2>Example Code</h2>
+<pre>
+&lt;audio controls&gt;
+  &lt;source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;figure&gt;
+  &lt;video controls&gt;
+    &lt;source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"&gt;
+    &lt;track src="https://www.w3schools.com/subtitles.srt" kind="subtitles" srclang="en" label="English"&gt;
+    Your browser does not support the video element.
+  &lt;/video&gt;
+  &lt;figcaption&gt;Sample Video with Subtitles&lt;/figcaption&gt;
+&lt;/figure&gt;
+</pre>
+
+<h2>HTML Tags & Attributes Explanation</h2>
+<div class="tag-explanation">
+  <h3>&lt;audio&gt;</h3>
+  <p>Embeds an audio player supporting MP3 or WAV formats. Multiple <code>&lt;source&gt;</code> elements can be used.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>&lt;video&gt;</h3>
+  <p>Embeds a video player with optional subtitles, captions, or multiple formats.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>&lt;source&gt;</h3>
+  <p>Specifies media resources for <code>&lt;audio&gt;</code> or <code>&lt;video&gt;</code> allowing browser format selection.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>&lt;track&gt;</h3>
+  <p>Specifies text tracks like subtitles or captions for media elements.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>&lt;figure&gt;</h3>
+  <p>Groups media content with an optional caption for semantic meaning.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>&lt;figcaption&gt;</h3>
+  <p>Provides a caption for content inside a <code>&lt;figure&gt;</code>.</p>
+</div>
+
+<div class="tag-explanation">
+  <h3>Attributes</h3>
+  <p><code>src</code>: Media file path. <code>type</code>: MIME type. <code>kind</code>: Track type. <code>srclang</code>: Track language. <code>label</code>: Track name. <code>controls</code>: Adds playback UI.</p>
+</div>
+
+<script>
+  document.querySelectorAll("audio, video").forEach(media => {
+    media.addEventListener("play", () => {
+      console.log(`${media.tagName} is playing`);
+    });
+  });
+</script>
+
+</div> <!-- container -->
+</body>
+</html>

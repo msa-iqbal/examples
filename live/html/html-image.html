@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Image — Web QuickRef</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.ico" type="image/x-icon" />
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        margin: 40px auto;
+        max-width: 1000px;
+        line-height: 1.7;
+        background-color: #111827;
+        color: #e5e7eb;
+        padding: 0 1rem;
+      }
+
+      header, main {
+        margin-bottom: 2rem;
+      }
+
+      h1, h2, h3 {
+        color: #f9fafb;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      /* Image Demo */
+      .image-demo {
+        margin-bottom: 2rem;
+        padding: 1rem;
+        border: 1px solid #374151;
+        border-radius: 8px;
+        background-color: #1f2937;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 6px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
+      }
+
+      img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Code Block */
+      pre {
+        background-color: #1e1e1e;
+        color: #f3f4f6;
+        padding: 1.25rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        border: 1px solid #374151;
+        font-family: "JetBrains Mono", "Fira Code", Consolas, monospace;
+        margin: 1.5rem 0;
+        font-size: 0.95rem;
+      }
+
+      code:not(pre > code) {
+        font-family: inherit;
+        background-color: #374151;
+        color: #f3f4f6;
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+      }
+
+      /* Explanation Boxes */
+      .tag-explanation {
+        margin-bottom: 1.5rem;
+        padding: 1rem 1.25rem;
+        background-color: #1f2937;
+        border: 1px solid #374151;
+        border-radius: 6px;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          margin: 20px auto;
+        }
+        .image-demo {
+          padding: 0.5rem;
+          gap: 0.75rem;
+        }
+        img {
+          width: 100%;
+          max-width: 220px;
+        }
+        pre {
+          padding: 1rem;
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>HTML Image</h1>
+    </header>
+
+    <main>
+      <!-- Image Examples -->
+      <section>
+        <h2>Image Examples</h2>
+        <div class="image-demo">
+          <img src="https://placehold.co/300x200/4b5563/e5e7eb?text=Placeholder+Image"
+               alt="Placeholder Image"
+               width="300"
+               height="200" />
+          <img src="https://placehold.co/300x300/4b5563/e5e7eb?text=Square+Placeholder"
+               alt="Square Placeholder"
+               loading="lazy" />
+          <img src="https://placehold.co/150x150/4b5563/e5e7eb?text=Small+Image"
+               alt="Small Placeholder"
+               width="150"
+               height="150" />
+        </div>
+      </section>
+
+      <!-- Example Code -->
+      <section>
+        <h2>Example Code</h2>
+        <pre><code>&lt;img src="https://placehold.co/300x200" alt="Placeholder Image" width="300" height="200"&gt;
+&lt;img src="https://placehold.co/300x300" alt="Square Placeholder" loading="lazy"&gt;
+&lt;img src="https://placehold.co/150x150" alt="Small Placeholder" width="150" height="150"&gt;</code></pre>
+      </section>
+
+      <!-- Explanations -->
+      <section>
+        <h2>HTML Image Tag & Attributes</h2>
+
+        <div class="tag-explanation">
+          <h3>&lt;img&gt;</h3>
+          <p>
+            The <code>&lt;img&gt;</code> tag embeds an image in a webpage. It is a
+            self-closing tag that uses attributes to define the source and properties.
+          </p>
+        </div>
+
+        <div class="tag-explanation">
+          <h3>src</h3>
+          <p>
+            The <code>src</code> attribute specifies the URL or file path of the image.
+            Example: <code>src="image.jpg"</code>.
+          </p>
+        </div>
+
+        <div class="tag-explanation">
+          <h3>alt</h3>
+          <p>
+            The <code>alt</code> attribute provides alternative text for accessibility
+            and when the image fails to load.
+          </p>
+        </div>
+
+        <div class="tag-explanation">
+          <h3>width</h3>
+          <p>
+            The <code>width</code> attribute sets the display width of the image
+            (in pixels or %). Example: <code>width="300"</code>.
+          </p>
+        </div>
+
+        <div class="tag-explanation">
+          <h3>height</h3>
+          <p>
+            The <code>height</code> attribute sets the display height of the image.
+            Example: <code>height="200"</code>.
+          </p>
+        </div>
+
+        <div class="tag-explanation">
+          <h3>loading</h3>
+          <p>
+            The <code>loading</code> attribute defines how the image is loaded:
+            <code>lazy</code> (load only when needed) or <code>eager</code>
+            (load immediately).
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Click interaction for images
+      document.querySelectorAll("img").forEach((img) => {
+        img.addEventListener("click", () => {
+          alert(`Clicked image with alt text: "${img.alt}"`);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -39,7 +39,7 @@ The platform features a split-screen layout with:
 ## 📦 Installation
 
 1. Clone the repository:
-\`\`\`bash
+```bash
 git clone https://github.com/yourusername/examples.git
 \`\`\`
 
